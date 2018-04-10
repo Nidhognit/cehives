@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block body %}
+    <div class="login-container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <div class="text-center m-b-md">
+                    <h3>Регистрация</h3>
+                    <small>Здесь будет какой то текст</small>
+                </div>
+                <div class="hpanel">
+                    <div class="panel-body">
+                        {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_label(form.username) }}
+                            {{ form_widget(form.username) }}
+                            {{ form_errors(form.username) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.email) }}
+                            {{ form_widget(form.email) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.password) }}
+                            {{ form_widget(form.password) }}
+                            {{ form_errors(form.password) }}
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Регистрация</button>
+                        <a class="btn btn-default btn-block" href="#">Логин</a>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
