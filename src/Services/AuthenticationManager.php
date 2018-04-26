@@ -10,7 +10,9 @@ namespace App\Services;
 use App\Entity\User;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Security\LoginManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 
 class AuthenticationManager
 {
@@ -23,6 +25,11 @@ class AuthenticationManager
     /** @var EncoderFactoryInterface */
     private $encoderFactory;
 
+    /**
+     * @var TokenStorageInterface
+     */
+    private $tokenStorage;
+
     private $firewallName = 'main';
 
     /**
@@ -30,18 +37,26 @@ class AuthenticationManager
      * @param UserManagerInterface $userManager
      * @param LoginManagerInterface $loginManager
      * @param EncoderFactoryInterface $encoderFactory
+     * @param TokenStorageInterface $tokenStorage
      */
-    public function __construct(UserManagerInterface $userManager, LoginManagerInterface $loginManager, EncoderFactoryInterface $encoderFactory)
+    public function __construct(UserManagerInterface $userManager, LoginManagerInterface $loginManager, EncoderFactoryInterface $encoderFactory, TokenStorageInterface $tokenStorage)
     {
         $this->userManager = $userManager;
         $this->loginManager = $loginManager;
         $this->encoderFactory = $encoderFactory;
+        $this->tokenStorage = $tokenStorage;
     }
 
 
     public function login(User $user): void
     {
         $this->loginManager->logInUser($this->firewallName, $user);
+    }
+
+    public function logout(Request $request, $token)
+    {
+        $this->tokenStorage->removeToken($token);
+        $request->getSession()->invalidate();
     }
 
     public function checkPasword(User $user, string $password)

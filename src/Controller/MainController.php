@@ -9,7 +9,9 @@ use App\Forms\RegistrationType;
 use App\Services\AuthenticationManager;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -35,11 +37,11 @@ class MainController extends Controller
     /**
      * @Route("/registration", name="registration")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
     public function registrationAction(Request $request)
     {
-        if($this->getUser()){
+        if ($this->getUser()) {
             return $this->redirectToRoute('homepage');
         }
         $user = $this->authenticationManager->createNew();
@@ -60,10 +62,12 @@ class MainController extends Controller
 
     /**
      * @Route("/login", name="login")
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function loginAction(Request $request)
     {
-        if($this->getUser()){
+        if ($this->getUser()) {
             return $this->redirectToRoute('homepage');
         }
         $form = $this->getLoginForm();
@@ -74,9 +78,9 @@ class MainController extends Controller
             $usernameOrEmail = $form->get('_username')->getData();
             $user = $this->authenticationManager->findUserByUsernameOrEmail($usernameOrEmail);
 
-            if($user instanceof User ){
+            if ($user instanceof User) {
                 $password = $form->get('_password')->getData();
-                if($this->authenticationManager->checkPasword($user, $password)){
+                if ($this->authenticationManager->checkPasword($user, $password)) {
                     $this->authenticationManager->login($user);
                     return $this->redirectToRoute('homepage');
                 }
@@ -91,9 +95,17 @@ class MainController extends Controller
         ]);
     }
 
-    public function logoutAction()
+    /**
+     * @Route("/logout", name="logout")
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function logoutAction(Request $request)
     {
+        $token = $this->container->get('security.token_storage')->getToken();
+        $this->authenticationManager->logout($request, $token);
 
+        return $this->redirectToRoute('homepage');
     }
 
     /**
