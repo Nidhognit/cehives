@@ -39,6 +39,9 @@ class MainController extends Controller
      */
     public function registrationAction(Request $request)
     {
+        if($this->getUser()){
+            return $this->redirectToRoute('homepage');
+        }
         $user = $this->authenticationManager->createNew();
 
         $form = $this->getRegistrationForm($user);
@@ -60,6 +63,9 @@ class MainController extends Controller
      */
     public function loginAction(Request $request)
     {
+        if($this->getUser()){
+            return $this->redirectToRoute('homepage');
+        }
         $form = $this->getLoginForm();
         $form->handleRequest($request);
 
