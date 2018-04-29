@@ -78,7 +78,7 @@ class MainController extends Controller
             $usernameOrEmail = $form->get('_username')->getData();
             $user = $this->authenticationManager->findUserByUsernameOrEmail($usernameOrEmail);
 
-            if ($user instanceof User) {
+            if ($user instanceof User && $user->isEnabled()) {
                 $password = $form->get('_password')->getData();
                 if ($this->authenticationManager->checkPasword($user, $password)) {
                     $this->authenticationManager->login($user);

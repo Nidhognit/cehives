@@ -32,7 +32,7 @@ class RegistrationType extends AbstractType
             ])
             ->add('plainPassword', PasswordType::class, [
                 'label' => 'Пароль (не менее 10 символов)',
-                'constraints' => [new Length(['min' => 3])]
+                'constraints' => [new Length(['min' => 10])]
             ]);
     }
 

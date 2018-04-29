@@ -3,16 +3,29 @@
 {% block title %}Hello!{% endblock %}
 {% block returnHome %}{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
 
-<div class="example-wrapper">
-    <h1>Привет ✅</h1>
-    <h2>Домашняя страница игры cehevis</h2>
-<a href="{{ path('registration') }}" class="btn btn-default">Регистрация</a>
-<a href="{{ path('login') }}" class="btn btn-default">Логин</a>
-<a href="{{ path('logout') }}" class="btn btn-default">Логаут</a>
-</div>
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Привет ✅</h1>
+        <h2>Домашняя страница игры cehevis</h2>
+        <a href="{{ path('registration') }}" class="btn btn-default">Регистрация</a>
+        <a href="{{ path('login') }}" class="btn btn-default">Логин</a>
+        <a href="{{ path('logout') }}" class="btn btn-default">Логаут</a>
+        <br>
+        {% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <a href="{{ path('gamelist') }}" class="btn btn-success">Игры</a>
+        {% endif %}
+    </div>
 {% endblock %}
