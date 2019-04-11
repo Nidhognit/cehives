@@ -3,29 +3,15 @@
 {% block title %}Hello!{% endblock %}
 {% block returnHome %}{% endblock %}
 {% block body %}
-    <style>
-        .example-wrapper {
-            margin: 1em auto;
-            max-width: 800px;
-            width: 95%;
-            font: 18px/1.5 sans-serif;
-        }
-
-        .example-wrapper code {
-            background: #F5F5F5;
-            padding: 2px 6px;
-        }
-    </style>
-
     <div class="example-wrapper">
-        <h1>Привет ✅</h1>
-        <h2>Домашняя страница игры cehevis</h2>
-        <a href="{{ path('registration') }}" class="btn btn-default">Регистрация</a>
-        <a href="{{ path('login') }}" class="btn btn-default">Логин</a>
-        <a href="{{ path('logout') }}" class="btn btn-default">Логаут</a>
+        <h1>{{ 'transaltion@home.title'|trans }}</h1>
+        <h2>{{ 'transaltion@home.text'|trans }}</h2>
+        <a href="{{ path('registration') }}" class="btn btn-default">{{ 'transaltion@registration.btn'|trans }}</a>
+        <a href="{{ path('login') }}" class="btn btn-default">{{ 'transaltion@login.btn'|trans }}</a>
+        <a href="{{ path('logout') }}" class="btn btn-default">{{ 'transaltion@logout.btn'|trans }}</a>
         <br>
         {% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <a href="{{ path('gamelist') }}" class="btn btn-success">Игры</a>
+            <a href="{{ path('gamelist') }}" class="btn btn-success">{{ 'translation_all_games'|trans }}</a>
         {% endif %}
     </div>
 {% endblock %}

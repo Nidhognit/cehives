@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <div class="text-center m-b-md">
-                    <h3>Логин</h3>
+                    <h3>{{ 'transaltion@login.title'|trans }}</h3>
                 </div>
                 <div class="hpanel">
                     <div class="panel-body">
@@ -25,8 +25,10 @@
                             {{ form_widget(form._password) }}
                             {{ form_errors(form._password) }}
                         </div>
-                        <button type="submit" class="btn btn-success btn-block">Логин</button>
-                        <a class="btn btn-default btn-block" href="{{ path('registration') }}">Регистрация</a>
+                        <button type="submit"
+                                class="btn btn-success btn-block">{{ 'transaltion@login.btn'|trans }}</button>
+                        <a class="btn btn-default btn-block"
+                           href="{{ path('registration') }}">{{'transaltion@registration.btn'|trans}}</a>
                         {{ form_end(form) }}
                     </div>
                 </div>

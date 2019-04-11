@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="ru" target-language="ru" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="jFOQTB_" resname="translation_game">
+        <source>translation_game</source>
+        <target>Игра</target>
+      </trans-unit>
+      <trans-unit id="jPe6wzh" resname="translation_all_games">
+        <source>translation_all_games</source>
+        <target>Все игры</target>
+      </trans-unit>
+      <trans-unit id="fdCzxcO" resname="translation_sundboxes">
+        <source>translation_sundboxes</source>
+        <target>Песочницы</target>
+      </trans-unit>
+      <trans-unit id="lmerpTq" resname="translation_start_new_game">
+        <source>translation_start_new_game</source>
+        <target>Начать новую игру</target>
+      </trans-unit>
+      <trans-unit id="11y_9Z_" resname="translation_continue_game">
+        <source>translation_continue_game</source>
+        <target>Продолжить игру</target>
+      </trans-unit>
+      <trans-unit id="jL4XsZi" resname="transaltion@registration.title">
+        <source>transaltion@registration.title</source>
+        <target>Регистрация</target>
+      </trans-unit>
+      <trans-unit id="Qk9VYJV" resname="transaltion@registration.btn">
+        <source>transaltion@registration.btn</source>
+        <target>Регистрация</target>
+      </trans-unit>
+      <trans-unit id="tip7KgF" resname="transaltion@login.btn">
+        <source>transaltion@login.btn</source>
+        <target>Логин</target>
+      </trans-unit>
+      <trans-unit id="qcLizcH" resname="transaltion@login.title">
+        <source>transaltion@login.title</source>
+        <target>Логин</target>
+      </trans-unit>
+      <trans-unit id="4SwqpAP" resname="transaltion@registration.text">
+        <source>transaltion@registration.text</source>
+        <target>Здесь будет какой то текст</target>
+      </trans-unit>
+      <trans-unit id="JjZ3nDs" resname="transaltion@home.title">
+        <source>transaltion@home.title</source>
+        <target>Привет</target>
+      </trans-unit>
+      <trans-unit id="SWDsSln" resname="transaltion@home.text">
+        <source>transaltion@home.text</source>
+        <target>Домашняя страница игры</target>
+      </trans-unit>
+      <trans-unit id="hB1Lhu9" resname="transaltion@logout.btn">
+        <source>transaltion@logout.btn</source>
+        <target>Вылогинится</target>
+      </trans-unit>
+      <trans-unit id="wX0rY9L" resname="transaltion@company.name">
+        <source>transaltion@company.name</source>
+        <target>Cehevis game inc</target>
+      </trans-unit>
+      <trans-unit id="d6LgRG5" resname="transaltion@company.title">
+        <source>transaltion@company.title</source>
+        <target>игры и корпоративы</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

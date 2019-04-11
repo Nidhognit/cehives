@@ -7,8 +7,8 @@
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <div class="text-center m-b-md">
-                    <h3>Регистрация</h3>
-                    <small>Здесь будет какой то текст</small>
+                    <h3>{{'transaltion@registration.title'|trans}}</h3>
+                    <small>{{'transaltion@registration.text'|trans}}</small>
                 </div>
                 <div class="hpanel">
                     <div class="panel-body">
@@ -28,8 +28,8 @@
                             {{ form_widget(form.plainPassword) }}
                             {{ form_errors(form.plainPassword) }}
                         </div>
-                        <button type="submit" class="btn btn-success btn-block">Регистрация</button>
-                        <a class="btn btn-default btn-block" href="{{ path('login') }}">Логин</a>
+                        <button type="submit" class="btn btn-success btn-block">{{'transaltion@registration.btn'|trans}}</button>
+                        <a class="btn btn-default btn-block" href="{{ path('login') }}">{{ 'transaltion@login.btn'|trans  }}</a>
                         {{ form_end(form) }}
                     </div>
                 </div>
