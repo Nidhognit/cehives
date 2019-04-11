@@ -14,11 +14,26 @@
     </a>
 {% endblock %}
 {% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('build/js/app.js') }}"></script>
+{% endblock %}
+{% block messages %}
+    <div class="main-message-area">
+        {% for message in app.flashes(constant('App\\Controller\\MainController::INFO')) %}
+            <span class="alert-notice-message">{{ message }}</span>
+        {% endfor %}
+        {% for message in app.flashes(constant('App\\Controller\\MainController::ERROR')) %}
+            <span class="alert-error-message">{{ message }}</span>
+        {% endfor %}
+        {% for message in app.flashes(constant('App\\Controller\\MainController::SUCCESS')) %}
+            <span class="alert-success-message">{{ message }}</span>
+        {% endfor %}
+    </div>
+{% endblock %}
 {% block copyright %}
     <div class="row">
         <div class="col-md-12 text-center">
-            <strong>Cehevis game inc</strong> - игры и корпоративы <br> 2018 Copyright
+            <strong>Cehevis game inc</strong> - игры и корпоративы <br> 2019 Copyright
         </div>
     </div>
 {% endblock %}

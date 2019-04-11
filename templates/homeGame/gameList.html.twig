@@ -20,9 +20,9 @@
     {{ form_end(form) }}
 
     {% for game in gameList %}
+        <br>
         <a href="{{ path('gameplay', {'id': game.id}) }}" class="btn btn-info btn-lg" data-game-id="{{ game.id }}">
-            <span>Игра: {{ game.name }}</span>
+            <span>Продолжить игру: {{ game.name }}</span>
         </a>
     {% endfor %}
-
 {% endblock %}

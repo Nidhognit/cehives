@@ -14,14 +14,13 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Class MainGameController
  * @Route("/game")
  * @package App\Controller
  */
-class MainGameController extends Controller
+class HomeGameController extends MainController
 {
     /** @var GameSandboxManager */
     protected $gameSandboxManager;
@@ -55,7 +54,7 @@ class MainGameController extends Controller
         $gameList = $this->gameSandboxManager->loadAllGames($user);
 
 
-        return $this->render('mainGame/gameList.html.twig', [
+        return $this->render('homeGame/gameList.html.twig', [
             'gameList' => $gameList,
             'form' => $form->createView()
         ]);
@@ -69,7 +68,7 @@ class MainGameController extends Controller
      */
     public function gameAction(Request $request, $id)
     {
-        return $this->render('mainGame/game.html.twig', [
+        return $this->render('homeGame/game.html.twig', [
             'game' => $id,
 
         ]);
