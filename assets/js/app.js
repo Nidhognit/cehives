@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var toastr = require('toastr');
+require('bootstrap');
 toastr.options = {
     "closeButton": false,
     "debug": false,
@@ -16,10 +17,9 @@ toastr.options = {
     "hideEasing": "linear",
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
-}
+};
 
 $(function () {
-    debugger
     var $allMessage = $('.main-message-area');
     $allMessage.find('.alert-notice-message').each(function () {
         toastr.info(this.textContent);
@@ -29,5 +29,17 @@ $(function () {
     });
     $allMessage.find('.alert-success-message').each(function () {
         toastr.success(this.textContent);
+    });
+
+    $('#modal-window').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let target = button.data('form-target');
+        let value = button.data('form-value');
+        $(this).find(target).val(value);
+    });
+
+    $('#btn-form-submit').on('click', function (event) {
+        let targetForm = $(this).data('target-form');
+        $(targetForm).submit();
     })
-})
+});

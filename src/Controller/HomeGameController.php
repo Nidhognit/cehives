@@ -7,13 +7,16 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Forms\Main\DeleteType;
 use App\Forms\MainGame\NewGameType;
 use App\Services\GameManager\GameSandboxManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class MainGameController
@@ -22,16 +25,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class HomeGameController extends MainController
 {
+    public const GAME_LIMIT = 3;
     /** @var GameSandboxManager */
     protected $gameSandboxManager;
+    /** @var TranslatorInterface */
+    protected $translator;
 
     /**
      * MainGameController constructor.
      * @param GameSandboxManager $gameSandboxManager
+     * @param TranslatorInterface $translator
      */
-    public function __construct(GameSandboxManager $gameSandboxManager)
+    public function __construct(GameSandboxManager $gameSandboxManager, TranslatorInterface $translator)
     {
         $this->gameSandboxManager = $gameSandboxManager;
+        $this->translator = $translator;
     }
 
     /**
@@ -45,19 +53,47 @@ class HomeGameController extends MainController
 
         $form = $this->getNewGameForm();
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        $gameList = $this->gameSandboxManager->loadAllGames($user);
+        $isGameLimit = count($gameList) >= self::GAME_LIMIT;
+        if (!$isGameLimit && $form->isSubmitted() && $form->isValid()) {
             $game = $this->gameSandboxManager->createNewGame($user, $form->get('name')->getData());
 
             return $this->redirectToRoute('gameplay', ['id' => $game->getId()]);
         }
 
-        $gameList = $this->gameSandboxManager->loadAllGames($user);
-
-
         return $this->render('homeGame/gameList.html.twig', [
             'gameList' => $gameList,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'isGameLimit' => $isGameLimit,
+            'deleteForm' => $this->getDeleteForm()->createView()
         ]);
+    }
+
+    /**
+     * @Route("/delete", name="delete_game", requirements={"id": "\d+"})
+     * @Method("POST")
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse|Response
+     */
+    public function gameDelete(Request $request)
+    {
+        $form = $this->getDeleteForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $game = $this->gameSandboxManager->findOneByIdAndUser($form->get('id')->getData(), $this->getUser());
+            if ($game) {
+                $this->gameSandboxManager->delete($game, true);
+                $this->addSuccessMessage($this->translator->trans('translation@message.delete_seccess'));
+            } else {
+                $this->addErrorMessage($this->translator->trans('translation@message.access_denied'));
+            }
+        } else {
+            $this->addErrorMessage($this->translator->trans('translation@message.unknown_error'));
+        }
+
+
+        return $this->redirectToRoute('gamelist');
     }
 
     /**
@@ -82,4 +118,11 @@ class HomeGameController extends MainController
         ]);
     }
 
+    public function getDeleteForm(): FormInterface
+    {
+        return $this->createForm(DeleteType::class, null, [
+            'method' => 'POST',
+            'action' => $this->generateUrl('delete_game')
+        ]);
+    }
 }

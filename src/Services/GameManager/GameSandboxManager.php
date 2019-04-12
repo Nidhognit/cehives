@@ -9,6 +9,7 @@ namespace App\Services\GameManager;
 
 use App\Entity\Game;
 use App\Entity\User;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class GameSandboxManager
@@ -17,8 +18,8 @@ class GameSandboxManager
 
     /** @var EntityManagerInterface */
     protected $em;
-
-    protected $gameList = [];
+    /** @var ObjectRepository */
+    protected $gameRepository;
 
     /**
      * GameSandboxManager constructor.
@@ -49,11 +50,31 @@ class GameSandboxManager
      */
     public function loadAllGames(User $user): array
     {
-        if (empty($this->gameList)) {
-            $this->gameList = $this->em->getRepository(Game::class)
-                ->findBy(['user_id' => $user->getId(), 'type' => Game::TYPE_SANDBOX]);
+        return $this->gameList = $this->getRepository()
+            ->findBy(['user_id' => $user->getId(), 'type' => Game::TYPE_SANDBOX]);
+    }
+
+    public function findOneByIdAndUser(int $id, User $user): ?Game
+    {
+        return $this->getRepository()
+            ->findOneBy(['id' => $id, 'user_id' => $user->getId(), 'type' => Game::TYPE_SANDBOX]);
+    }
+
+    public function delete(Game $game, bool $flash = false)
+    {
+        $this->em->remove($game);
+        if ($flash) {
+            $this->em->flush();
+        }
+    }
+
+    protected function getRepository(): ObjectRepository
+    {
+        if (!$this->gameRepository) {
+            $this->gameRepository = $this->em->getRepository(Game::class);
         }
 
-        return $this->gameList;
+        return $this->gameRepository;
     }
+
 }

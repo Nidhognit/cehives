@@ -7,9 +7,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class MainController extends Controller
+class MainController extends AbstractController
 {
     public const ERROR = 'cehevis_error';
     public const INFO = 'cehevis_info';

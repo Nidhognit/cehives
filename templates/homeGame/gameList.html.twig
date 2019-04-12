@@ -6,23 +6,53 @@
 
     <h2>{{ 'translation_sundboxes' | trans }}</h2>
     <div class="col-lg-12">
-        {{ form_start(form) }}
-        <div class="form-group ">
-            <div class="col-lg-4">
-                {{ form_label(form.name) }}
-                {{ form_widget(form.name) }}
-                {{ form_errors(form.name) }}
-                <button class="btn btn-default" type="submit">{{ 'translation_start_new_game'|trans }}</button>
+        {% if isGameLimit %}
+            <div class="alert alert-warning"><span>{{ 'translation_game_limit'|trans }}</span></div>
+        {% else %}
+            {{ form_start(form) }}
+            <div class="form-group ">
+                <div class="col-lg-4">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                    {{ form_errors(form.name) }}
+                    <button class="btn btn-default" type="submit">{{ 'translation_start_new_game'|trans }}</button>
+                </div>
             </div>
-        </div>
+            {{ form_end(form) }}
+        {% endif %}
     </div>
-
-    {{ form_end(form) }}
 
     {% for game in gameList %}
         <br>
         <a href="{{ path('gameplay', {'id': game.id}) }}" class="btn btn-info btn-lg" data-game-id="{{ game.id }}">
             <span>{{ 'translation_continue_game' |trans }}: {{ game.name }}</span>
         </a>
+        <span class="btn btn-danger" data-toggle="modal" data-target="#modal-window" data-form-target="#delete_form_id"
+              data-form-value="{{ game.id }}"><i class="fa fa-trash-o"></i></span>
     {% endfor %}
+
+    <div class="modal fade in" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger">{{ 'translation@game.delete'|trans }}</h5>
+                </div>
+                <div class="modal-body">
+                    <h1>{{ 'translation@game.delete.confirmation'|trans }}</h1>
+                    <div class="hidden">
+                        {{ form_start(deleteForm, {'attr': {'id': 'form_delete_game'}}) }}
+                        {{ form_end(deleteForm) }}
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">{{ 'translation@game.btn.cancel'|trans }}</button>
+                    <button id="btn-form-submit" type="button" class="btn btn-danger"
+                            data-target-form="#form_delete_game">{{ 'translation@game.btn.confirm'|trans }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -65,6 +65,38 @@
         <source>transaltion@company.title</source>
         <target>игры и корпоративы</target>
       </trans-unit>
+      <trans-unit id="l195MB2" resname="translation_game_limit">
+        <source>translation_game_limit</source>
+        <target>Вы достигли лимита игр. Удалите существующую чтобы начать новую</target>
+      </trans-unit>
+      <trans-unit id="LZuMFCD" resname="translation@message.unknown_error">
+        <source>translation@message.unknown_error</source>
+        <target>Неизвестная ошибка, попробуйте перезагрузить страницу</target>
+      </trans-unit>
+      <trans-unit id="BoGBC5." resname="translation@message.access_denied">
+        <source>translation@message.access_denied</source>
+        <target>Недостаточно прав для совершения операции</target>
+      </trans-unit>
+      <trans-unit id="WmXLNMb" resname="translation@message.delete_seccess">
+        <source>translation@message.delete_seccess</source>
+        <target>Удаление успешно!</target>
+      </trans-unit>
+      <trans-unit id="NXlO.wj" resname="translation@game.delete">
+        <source>translation@game.delete</source>
+        <target>Удалить игру</target>
+      </trans-unit>
+      <trans-unit id="cXRx9YJ" resname="translation@game.delete.confirmation">
+        <source>translation@game.delete.confirmation</source>
+        <target>Вы yверены что хотите удалить игру?</target>
+      </trans-unit>
+      <trans-unit id="gYHu19t" resname="translation@game.btn.cancel">
+        <source>translation@game.btn.cancel</source>
+        <target>Отмена</target>
+      </trans-unit>
+      <trans-unit id="vQAmDZQ" resname="translation@game.btn.confirm">
+        <source>translation@game.btn.confirm</source>
+        <target>Подтвердить</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
