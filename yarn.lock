@@ -883,7 +883,7 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bootstrap-sass@^4.0.0:
+bootstrap-sass@^3.3.7:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/bootstrap-sass/-/bootstrap-sass-3.4.1.tgz#6843c73b1c258a0ac5cb2cc6f6f5285b664a8e9a"
 
@@ -3764,6 +3764,10 @@ p-try@^1.0.0:
 pako@~1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
+
+paper@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/paper/-/paper-0.12.0.tgz#37397312fda5d0aca057a5735e5eeb631ff5baa4"
 
 parse-asn1@^5.0.0:
   version "5.1.0"
