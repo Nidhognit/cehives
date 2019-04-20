@@ -20,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class MainGameController
- * @Route("/game")
+ * @Route("/home_game")
  * @package App\Controller
  */
 class HomeGameController extends MainController
@@ -94,20 +94,6 @@ class HomeGameController extends MainController
 
 
         return $this->redirectToRoute('gamelist');
-    }
-
-    /**
-     * @Route("/play/{id}", name="gameplay", requirements={"id": "\d+"})
-     * @param Request $request
-     * @param $id
-     * @return RedirectResponse|Response
-     */
-    public function gameAction(Request $request, $id)
-    {
-        return $this->render('homeGame/game.html.twig', [
-            'game' => $id,
-
-        ]);
     }
 
     public function getNewGameForm(): FormInterface
