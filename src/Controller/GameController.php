@@ -36,10 +36,14 @@ class GameController extends MainController
      * @param $id
      * @return RedirectResponse|Response
      */
-    public function gameAction(Request $request, $id)
+    public function gameAction(Request $request, int $id)
     {
+        $game = $this->gameSandboxManager->findOneByIdAndUser($id, $this->getUser());
+        if (null === $game) {
+            throw $this->createNotFoundException();
+        }
         return $this->render('game/game.html.twig', [
-            'game' => $id,
+            'game' => $game->getId(),
 
         ]);
     }
