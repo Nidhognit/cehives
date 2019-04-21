@@ -17,6 +17,7 @@ class Game
 {
     public const TYPE_SANDBOX = 1;
     /**
+     * @var int
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -48,9 +49,21 @@ class Game
     protected $dateCreated;
 
     /**
-     * @return mixed
+     * @var int
+     * @ORM\Column(type="integer", nullable=false)
      */
-    public function getId()
+    protected $originalMapId;
+
+    /**
+     * @var array
+     * @ORM\Column(type="json_array", nullable=false)
+     */
+    protected $map = [];
+
+    /**
+     * @return int
+     */
+    public function getId():int
     {
         return $this->id;
     }
@@ -119,4 +132,23 @@ class Game
         $this->dateCreated = $dateCreated;
     }
 
+    public function getOriginalMapId(): int
+    {
+        return $this->originalMapId;
+    }
+
+    public function setOriginalMapId(int $originalMapId): void
+    {
+        $this->originalMapId = $originalMapId;
+    }
+
+    public function getMap(): array
+    {
+        return $this->map;
+    }
+
+    public function setMap(array $map): void
+    {
+        $this->map = $map;
+    }
 }

@@ -5,21 +5,21 @@ declare(strict_types=1);
  * And remember this above all: Our Mechanical gods are watching. Make sure They are not ashamed!
  */
 
-namespace App\Services\GameManager;
+namespace App\Manager;
 
 use App\Entity\Game;
+use App\Entity\MapTemplate;
 use App\Entity\User;
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
-class GameSandboxManager
+class GameSandboxManager extends AbstractEntityManager
 {
     public const GAME_LIMIT = 3;
 
-    /** @var EntityManagerInterface */
-    protected $em;
-    /** @var ObjectRepository */
-    protected $gameRepository;
+    public function getEntityClass(): string
+    {
+        return Game::class;
+    }
 
     /**
      * GameSandboxManager constructor.
@@ -30,13 +30,15 @@ class GameSandboxManager
         $this->em = $em;
     }
 
-    public function createNewGame(User $user, string $name): Game
+    public function createNewGame(User $user, string $name, MapTemplate $mapTemplate): Game
     {
         $game = new Game();
         $game->setName($name);
         $game->setType(Game::TYPE_SANDBOX);
         $game->setDateCreated(new \DateTime());
         $game->setUserId($user->getId());
+        $game->setOriginalMapId($mapTemplate->getId());
+        $game->setMap($mapTemplate->getMap());
 
         $this->em->persist($game);
         $this->em->flush();
@@ -67,14 +69,4 @@ class GameSandboxManager
             $this->em->flush();
         }
     }
-
-    protected function getRepository(): ObjectRepository
-    {
-        if (!$this->gameRepository) {
-            $this->gameRepository = $this->em->getRepository(Game::class);
-        }
-
-        return $this->gameRepository;
-    }
-
 }

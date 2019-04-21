@@ -15,6 +15,11 @@
                     {{ form_label(form.name) }}
                     {{ form_widget(form.name) }}
                     {{ form_errors(form.name) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_label(form.map_template) }}
+                    {{ form_widget(form.map_template) }}
+                    {{ form_errors(form.map_template) }}
                     <button class="btn btn-default" type="submit">{{ 'translation_start_new_game'|trans }}</button>
                 </div>
             </div>

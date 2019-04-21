@@ -9,6 +9,10 @@
         <source>translation@game_name</source>
         <target>Название игры</target>
       </trans-unit>
+      <trans-unit id="VC_QN4y" resname="translation@game_map_template">
+        <source>translation@game_map_template</source>
+        <target>Карта</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

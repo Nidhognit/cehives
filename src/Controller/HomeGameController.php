@@ -9,7 +9,8 @@ namespace App\Controller;
 
 use App\Forms\Main\DeleteType;
 use App\Forms\MainGame\NewGameType;
-use App\Services\GameManager\GameSandboxManager;
+use App\Manager\GameSandboxManager;
+use App\Manager\MapTemplateManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -28,19 +29,18 @@ class HomeGameController extends MainController
     public const GAME_LIMIT = 3;
     /** @var GameSandboxManager */
     protected $gameSandboxManager;
+    /** @var MapTemplateManager */
+    protected $mapTemplateManager;
     /** @var TranslatorInterface */
     protected $translator;
 
-    /**
-     * MainGameController constructor.
-     * @param GameSandboxManager $gameSandboxManager
-     * @param TranslatorInterface $translator
-     */
-    public function __construct(GameSandboxManager $gameSandboxManager, TranslatorInterface $translator)
+    public function __construct(GameSandboxManager $gameSandboxManager, MapTemplateManager $mapTemplateManager, TranslatorInterface $translator)
     {
         $this->gameSandboxManager = $gameSandboxManager;
+        $this->mapTemplateManager = $mapTemplateManager;
         $this->translator = $translator;
     }
+
 
     /**
      * @Route("/list", name="gamelist")
@@ -56,7 +56,8 @@ class HomeGameController extends MainController
         $gameList = $this->gameSandboxManager->loadAllGames($user);
         $isGameLimit = count($gameList) >= self::GAME_LIMIT;
         if (!$isGameLimit && $form->isSubmitted() && $form->isValid()) {
-            $game = $this->gameSandboxManager->createNewGame($user, $form->get('name')->getData());
+            $mapTemplate = $this->mapTemplateManager->find($form->get('map_template')->getData());
+            $game = $this->gameSandboxManager->createNewGame($user, $form->get('name')->getData(), $mapTemplate);
 
             return $this->redirectToRoute('gameplay', ['id' => $game->getId()]);
         }
@@ -100,7 +101,8 @@ class HomeGameController extends MainController
     {
         return $this->createForm(NewGameType::class, null, [
             'method' => 'POST',
-            'action' => $this->generateUrl('gamelist')
+            'action' => $this->generateUrl('gamelist'),
+            'mapList' => $this->mapTemplateManager->findAll()
         ]);
     }
 

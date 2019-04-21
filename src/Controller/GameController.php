@@ -7,11 +7,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Forms\Main\DeleteType;
-use App\Forms\MainGame\NewGameType;
-use App\Services\GameManager\GameSandboxManager;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Form\FormInterface;
+use App\Manager\GameSandboxManager;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +28,6 @@ class GameController extends MainController
     {
         $this->gameSandboxManager = $gameSandboxManager;
     }
-
 
 
     /**
