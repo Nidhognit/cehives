@@ -5,9 +5,9 @@ declare(strict_types=1);
  * And remember this above all: Our Mechanical gods are watching. Make sure They are not ashamed!
  */
 
-namespace App\Services;
+namespace Cehevis\Services;
 
-use App\Entity\User;
+use Cehevis\Entity\User;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Security\LoginManagerInterface;
 use Symfony\Component\HttpFoundation\Request;

@@ -5,11 +5,11 @@ declare(strict_types=1);
  * And remember this above all: Our Mechanical gods are watching. Make sure They are not ashamed!
  */
 
-namespace App\Manager;
+namespace Cehevis\Manager;
 
-use App\Entity\Game;
-use App\Entity\MapTemplate;
-use App\Entity\User;
+use Cehevis\Entity\Game;
+use Cehevis\Entity\MapTemplate;
+use Cehevis\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 
 class GameSandboxManager extends AbstractEntityManager

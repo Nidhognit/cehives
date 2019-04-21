@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace Cehevis\Controller;
 
-use App\Entity\User;
-use App\Forms\LoginType;
-use App\Forms\RegistrationType;
-use App\Services\AuthenticationManager;
+use Cehevis\Entity\User;
+use Cehevis\Forms\LoginType;
+use Cehevis\Forms\RegistrationType;
+use Cehevis\Services\AuthenticationManager;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;

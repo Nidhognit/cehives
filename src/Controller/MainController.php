@@ -5,7 +5,7 @@ declare(strict_types=1);
  * And remember this above all: Our Mechanical gods are watching. Make sure They are not ashamed!
  */
 
-namespace App\Controller;
+namespace Cehevis\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 

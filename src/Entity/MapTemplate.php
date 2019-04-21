@@ -5,7 +5,7 @@ declare(strict_types=1);
  * And remember this above all: Our Mechanical gods are watching. Make sure They are not ashamed!
  */
 
-namespace App\Entity;
+namespace Cehevis\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

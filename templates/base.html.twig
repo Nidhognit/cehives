@@ -19,13 +19,13 @@
 {% endblock %}
 {% block messages %}
     <div class="main-message-area">
-        {% for message in app.flashes(constant('App\\Controller\\MainController::INFO')) %}
+        {% for message in app.flashes(constant('Cehevis\\Controller\\MainController::INFO')) %}
             <span class="alert-notice-message">{{ message }}</span>
         {% endfor %}
-        {% for message in app.flashes(constant('App\\Controller\\MainController::ERROR')) %}
+        {% for message in app.flashes(constant('Cehevis\\Controller\\MainController::ERROR')) %}
             <span class="alert-error-message">{{ message }}</span>
         {% endfor %}
-        {% for message in app.flashes(constant('App\\Controller\\MainController::SUCCESS')) %}
+        {% for message in app.flashes(constant('Cehevis\\Controller\\MainController::SUCCESS')) %}
             <span class="alert-success-message">{{ message }}</span>
         {% endfor %}
     </div>

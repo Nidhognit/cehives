@@ -5,9 +5,9 @@ declare(strict_types=1);
  * And remember this above all: Our Mechanical gods are watching. Make sure They are not ashamed!
  */
 
-namespace App\Controller;
+namespace Cehevis\Controller;
 
-use App\Manager\GameSandboxManager;
+use Cehevis\Manager\GameSandboxManager;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +17,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 /**
  * Class MainGameController
  * @Route("/game")
- * @package App\Controller
+ * @package Cehevis\Controller
  */
 class GameController extends MainController
 {

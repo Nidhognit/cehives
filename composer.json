@@ -44,12 +44,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "Cehevis\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "Cehevis\\Tests\\": "tests/"
         }
     },
     "replace": {

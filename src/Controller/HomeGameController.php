@@ -5,12 +5,12 @@ declare(strict_types=1);
  * And remember this above all: Our Mechanical gods are watching. Make sure They are not ashamed!
  */
 
-namespace App\Controller;
+namespace Cehevis\Controller;
 
-use App\Forms\Main\DeleteType;
-use App\Forms\MainGame\NewGameType;
-use App\Manager\GameSandboxManager;
-use App\Manager\MapTemplateManager;
+use Cehevis\Forms\Main\DeleteType;
+use Cehevis\Forms\MainGame\NewGameType;
+use Cehevis\Manager\GameSandboxManager;
+use Cehevis\Manager\MapTemplateManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -22,7 +22,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 /**
  * Class MainGameController
  * @Route("/home_game")
- * @package App\Controller
+ * @package Cehevis\Controller
  */
 class HomeGameController extends MainController
 {

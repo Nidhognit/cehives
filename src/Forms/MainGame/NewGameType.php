@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Forms\MainGame;
+namespace Cehevis\Forms\MainGame;
 
-use App\Entity\MapTemplate;
+use Cehevis\Entity\MapTemplate;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

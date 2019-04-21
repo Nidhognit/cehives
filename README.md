@@ -17,3 +17,7 @@ bin/console translation:update --force ru
  bin/console doctrine:schema:update --force
 
 ```
+# clear cache
+```bash
+bin/console cache:clear
+```

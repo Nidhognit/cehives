@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Forms;
+namespace Cehevis\Forms;
 
 
-use App\Entity\User;
+use Cehevis\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
