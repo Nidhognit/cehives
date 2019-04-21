@@ -39,6 +39,7 @@ class GameSandboxManager extends AbstractEntityManager
         $game->setUserId($user->getId());
         $game->setOriginalMapId($mapTemplate->getId());
         $game->setMap($mapTemplate->getMap());
+        $game->generateHash();
 
         $this->em->persist($game);
         $this->em->flush();
@@ -60,6 +61,11 @@ class GameSandboxManager extends AbstractEntityManager
     {
         return $this->getRepository()
             ->findOneBy(['id' => $id, 'user_id' => $user->getId(), 'type' => Game::TYPE_SANDBOX]);
+    }
+    public function findOneByIdHashAndUser(string $id, User $user): ?Game
+    {
+        return $this->getRepository()
+            ->findOneBy(['id_hash' => $id, 'user_id' => $user->getId(), 'type' => Game::TYPE_SANDBOX]);
     }
 
     public function delete(Game $game, bool $flash = false)

@@ -59,7 +59,7 @@ class HomeGameController extends MainController
             $mapTemplate = $this->mapTemplateManager->find($form->get('map_template')->getData());
             $game = $this->gameSandboxManager->createNewGame($user, $form->get('name')->getData(), $mapTemplate);
 
-            return $this->redirectToRoute('gameplay', ['id' => $game->getId()]);
+            return $this->redirectToRoute('gameplay', ['id_hash' => $game->getIdHash()]);
         }
 
         return $this->render('homeGame/gameList.html.twig', [

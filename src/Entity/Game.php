@@ -25,6 +25,12 @@ class Game
     protected $id;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", length=155, nullable=false, unique=true)
+     */
+    protected $id_hash;
+
+    /**
      * @var int
      * @ORM\Column(type="smallint", nullable=false)
      */
@@ -60,10 +66,15 @@ class Game
      */
     protected $map = [];
 
+    public function generateHash():void
+    {
+        $this->id_hash = sha1(time() . $this->user_id);
+    }
+
     /**
      * @return int
      */
-    public function getId():int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -150,5 +161,10 @@ class Game
     public function setMap(array $map): void
     {
         $this->map = $map;
+    }
+
+    public function getIdHash(): string
+    {
+        return $this->id_hash;
     }
 }

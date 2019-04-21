@@ -29,7 +29,7 @@
 
     {% for game in gameList %}
         <br>
-        <a href="{{ path('gameplay', {'id': game.id}) }}" class="btn btn-info btn-lg" data-game-id="{{ game.id }}">
+        <a href="{{ path('gameplay', {'id_hash': game.idHash}) }}" class="btn btn-info btn-lg" data-game-id="{{ game.id }}">
             <span>{{ 'translation_continue_game' |trans }}: {{ game.name }}</span>
         </a>
         <span class="btn btn-danger" data-toggle="modal" data-target="#modal-window" data-form-target="#delete_form_id"

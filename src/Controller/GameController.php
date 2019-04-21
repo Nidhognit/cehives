@@ -31,14 +31,14 @@ class GameController extends MainController
 
 
     /**
-     * @Route("/play/{id}", name="gameplay", requirements={"id": "\d+"})
+     * @Route("/play/{id_hash}", name="gameplay")
      * @param Request $request
      * @param $id
      * @return RedirectResponse|Response
      */
-    public function gameAction(Request $request, int $id)
+    public function gameAction(Request $request, string $id_hash)
     {
-        $game = $this->gameSandboxManager->findOneByIdAndUser($id, $this->getUser());
+        $game = $this->gameSandboxManager->findOneByIdHashAndUser($id_hash, $this->getUser());
         if (null === $game) {
             throw $this->createNotFoundException();
         }
