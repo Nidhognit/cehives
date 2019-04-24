@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block javascripts_game %}
+{% block javascripts %}
+    <script src="{{ asset('build/js/common.js') }}"></script>
     <script src="{{ asset('build/js/common.game.js') }}"></script>
     <script type="text/paperscript" canvas="gameCanvas" src="{{ asset('build/js/app.game.js') }}"></script>
 {% endblock %}

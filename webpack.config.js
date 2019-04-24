@@ -16,7 +16,7 @@ Encore
     // uncomment to define the assets of the project
     .addEntry('js/common', './assets/js/common.js')
     .addEntry('js/common.game', './assets/js/common.game.js')
-    .addEntry('js/game', './assets/js/app.game.js')
+    .addEntry('js/app.game', './assets/js/app.game.js')
     .addStyleEntry('css/app', './assets/css/global.scss')
 
     // uncomment if you use Sass/SCSS files
