@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace Cehevis\Controller;
 
 use Cehevis\Manager\GameSandboxManager;
+use Cehevis\Model\Factory\GameViewFactory;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,18 +16,21 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class MainGameController
- * @Route("/game")
+ * Class Mai
  * @package Cehevis\Controller
  */
 class GameController extends MainController
 {
-    /** @var GameSandboxManager */
+    /** @var GameSandboxManager
     protected $gameSandboxManager;
+    /** @var GameViewFactory */
+    protected $gameViewFactory;
 
-    public function __construct(GameSandboxManager $gameSandboxManager, TranslatorInterface $translator)
+
+    public function __construct(GameSandboxManager $gameSandboxManager, GameViewFactory $gameViewFactory)
     {
         $this->gameSandboxManager = $gameSandboxManager;
+        $this->gameViewFactory = $gameViewFactory;
     }
 
 
@@ -42,9 +46,10 @@ class GameController extends MainController
         if (null === $game) {
             throw $this->createNotFoundException();
         }
-        return $this->render('game/game.html.twig', [
-            'game' => $game->getId(),
+        $gameView = $this->gameViewFactory->create($game);
 
+        return $this->render('game/game.html.twig', [
+            'gameView' => $gameView
         ]);
     }
 }
