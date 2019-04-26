@@ -24,7 +24,7 @@ class MapBlockDescriptor implements BlockDescriptorInterface
     public function jsonSerialize(): array
     {
         return [
-            'color' => $this->collor,
+            'color' => $this->color,
             'type' => $this->type
         ];
     }

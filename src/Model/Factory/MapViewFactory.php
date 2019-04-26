@@ -13,9 +13,14 @@ use Cehevis\Resources\Mapper\LandscapeMapper;
 
 class MapViewFactory
 {
-    public const BLOCK_SIZE = 35;
+    public const BLOCK_SIZE = 50;
     /** @var MapBlockDescriptorBuilder */
     protected $descriptorBuilder;
+
+    public function __construct(MapBlockDescriptorBuilder $descriptorBuilder)
+    {
+        $this->descriptorBuilder = $descriptorBuilder;
+    }
 
     public function create(array $map, array $mapItems): MapView
     {
