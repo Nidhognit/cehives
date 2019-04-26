@@ -30,6 +30,12 @@ class MapTemplate
     protected $map = [];
 
     /**
+     * @var array
+     * @ORM\Column(type="json_array", nullable=false)
+     */
+    protected $mapItems = [];
+
+    /**
      * @var int
      * @ORM\Column(type="integer", nullable=false)
      */
@@ -91,4 +97,15 @@ class MapTemplate
     {
         $this->name = $name;
     }
+
+    public function getMapItems(): array
+    {
+        return $this->mapItems;
+    }
+
+    public function setMapItems(array $mapItems): void
+    {
+        $this->mapItems = $mapItems;
+    }
+
 }

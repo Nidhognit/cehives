@@ -11,13 +11,13 @@ namespace Cehevis\Model\Descriptors;
 class MapBlockDescriptor implements BlockDescriptorInterface
 {
     /** @var string */
-    protected $collor;
+    protected $color;
     /** @var string */
     protected $type;
 
-    public function __construct(string $collor, string $type)
+    public function __construct(string $color, string $type)
     {
-        $this->collor = $collor;
+        $this->color = $color;
         $this->type = $type;
     }
 
@@ -29,9 +29,9 @@ class MapBlockDescriptor implements BlockDescriptorInterface
         ];
     }
 
-    public function getCollor(): string
+    public function getColor(): string
     {
-        return $this->collor;
+        return $this->color;
     }
 
     public function getType(): string

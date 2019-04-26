@@ -9,11 +9,12 @@ namespace Cehevis\Model\Descriptors\DescriptorBuilder;
 
 
 use Cehevis\Model\Descriptors\MapBlockDescriptor;
+use Cehevis\Resources\Landscape\LandscapeInterface;
 
 class MapBlockDescriptorBuilder
 {
-    public function build(): MapBlockDescriptor
+    public function build(LandscapeInterface $landscape): MapBlockDescriptor
     {
-        return new MapBlockDescriptor();
+        return new MapBlockDescriptor($landscape->getColor(), $landscape->getName());
     }
 }

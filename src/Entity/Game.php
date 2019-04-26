@@ -66,6 +66,12 @@ class Game
      */
     protected $map = [];
 
+    /**
+     * @var array
+     * @ORM\Column(type="json_array", nullable=false)
+     */
+    protected $mapItems = [];
+
     public function generateHash():void
     {
         $this->id_hash = sha1(time() . $this->user_id);
@@ -167,4 +173,16 @@ class Game
     {
         return $this->id_hash;
     }
+
+    public function getMapItems(): array
+    {
+        return $this->mapItems;
+    }
+
+    public function setMapItems(array $mapItems): void
+    {
+        $mapItems = array_unique($mapItems);
+        $this->mapItems = $mapItems;
+    }
+
 }

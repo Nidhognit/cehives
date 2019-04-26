@@ -39,6 +39,7 @@ class GameSandboxManager extends AbstractEntityManager
         $game->setUserId($user->getId());
         $game->setOriginalMapId($mapTemplate->getId());
         $game->setMap($mapTemplate->getMap());
+        $game->setMapItems($mapTemplate->getMapItems());
         $game->generateHash();
 
         $this->em->persist($game);

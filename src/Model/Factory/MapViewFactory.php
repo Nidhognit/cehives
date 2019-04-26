@@ -9,6 +9,7 @@ namespace Cehevis\Model\Factory;
 
 use Cehevis\Model\Descriptors\DescriptorBuilder\MapBlockDescriptorBuilder;
 use Cehevis\Model\MapView;
+use Cehevis\Resources\Mapper\LandscapeMapper;
 
 class MapViewFactory
 {
@@ -16,10 +17,13 @@ class MapViewFactory
     /** @var MapBlockDescriptorBuilder */
     protected $descriptorBuilder;
 
-    public function create(array $map): MapView
+    public function create(array $map, array $mapItems): MapView
     {
-//        $descriptor = $this->descriptorBuilder->build();
+        $descriptorList = [];
+        foreach ($mapItems as $item) {
+            $descriptorList[$item] = $this->descriptorBuilder->build(LandscapeMapper::createLandscape($item));
+        }
 
-        return new MapView(1400, 800, $map, self::BLOCK_SIZE, []);
+        return new MapView(1400, 800, $map, self::BLOCK_SIZE, $descriptorList);
     }
 }

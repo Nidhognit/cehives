@@ -22,7 +22,7 @@ class GameViewFactory
 
     public function create(Game $game): GameView
     {
-        $mapView = $this->mapViewFactory->create($game->getMap());
+        $mapView = $this->mapViewFactory->create($game->getMap(), $game->getMapItems());
 
         return new GameView($mapView);
     }
