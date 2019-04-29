@@ -8,12 +8,28 @@
     {% endblock %}
 </head>
 <body>
+{% block bodyWrapperStart %}{% endblock %}
 {% block returnHome %}
-<a href="{{ path('homepage') }}" class="btn btn-info  btn-lg">
-        <i class="fa fa-home"></i>
-    </a>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('homepage') }}" class="btn btn-info  btn-lg">
+                <i class="fa fa-home"></i>
+            </a>
+        </div>
+        {% block extraHeader %}{% endblock %}
+
+    </div>
 {% endblock %}
 {% block body %}{% endblock %}
+{% block copyright %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <strong>{{ 'transaltion@company.name'|trans }}</strong> - {{ 'transaltion@company.title'|trans }} <br> 2019
+            Copyright
+        </div>
+    </div>
+{% endblock %}
+{% block bodyWrapperEnd %}{% endblock %}
 {% block javascripts %}
     <script src="{{ asset('build/js/common.js') }}"></script>
 {% endblock %}
@@ -30,12 +46,6 @@
         {% endfor %}
     </div>
 {% endblock %}
-{% block copyright %}
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <strong>{{'transaltion@company.name'|trans}}</strong> - {{'transaltion@company.title'|trans}} <br> 2019 Copyright
-        </div>
-    </div>
-{% endblock %}
+
 </body>
 </html>

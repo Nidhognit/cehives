@@ -49,7 +49,8 @@ class GameController extends MainController
         $gameView = $this->gameViewFactory->create($game);
 
         return $this->render('game/game.html.twig', [
-            'gameView' => $gameView
+            'gameView' => $gameView,
+            'game' => $game
         ]);
     }
 }

@@ -1,8 +1,31 @@
 {% extends 'base.game.html.twig' %}
 
-{% block title %}Game list{% endblock %}
+{% block title %}{{ 'translation_game'|trans }}: {{ game.name }}{% endblock %}
+{% block bodyWrapperStart %}
+<div id="wrapper">
+    <div class="content">
+        {% endblock %}
+        {% block bodyWrapperEnd %}
+    </div>
+</div>{% endblock %}
+
+{% block extraHeader %}
+    <div class="col-md-6">
+        <h4>{{ 'translation_game'|trans }}: {{ game.name }}</h4>
+    </div>
+
+{% endblock %}
 {% block body %}
-    <h1>{{ 'translation_game'|trans }}</h1>
     <span id="game-initial" class="hide" data-game-initial="{{ gameView|json_encode }}"></span>
-    <canvas style="width: 1400px; height: 800px; border: black solid 1px" id="gameCanvas"></canvas>
+    <div class="col-md-12" style="height: 80px; border: black solid 1px">
+
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-10">
+            <canvas style="width: 1400px; height: 800px; border: black solid 1px" id="gameCanvas"></canvas>
+        </div>
+        <div class="col-md-2" style="height: 800px; border: black solid 1px">
+
+        </div>
+    </div>
 {% endblock %}
