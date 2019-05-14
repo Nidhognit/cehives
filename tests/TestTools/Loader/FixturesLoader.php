@@ -78,28 +78,30 @@ class FixturesLoader
         $metadata->setIdGenerator(new \Doctrine\ORM\Id\AssignedGenerator());
     }
 
-    protected function createNewEntities(string $entity, array &$data): void
+    protected function createNewEntities(string $entity, array &$dataList): void
     {
-        $class = new $entity;
-        foreach ($data as $method => $value) {
-            $setMethod = 'set' . $method;
-            if (method_exists($class, $setMethod)) {
-                $class->$setMethod($value);
-                continue;
-            }
-            if (property_exists($class, $method)) {
-                $ref = new \ReflectionObject($class);
+        foreach ($dataList as $data) {
+            $class = new $entity;
+            foreach ($data as $method => $value) {
+                $setMethod = 'set' . $method;
+                if (method_exists($class, $setMethod)) {
+                    $class->$setMethod($value);
+                    continue;
+                }
+                if (property_exists($class, $method)) {
+                    $ref = new \ReflectionObject($class);
 
-                $refProp = $ref->getProperty($method);
-                $refProp->setAccessible(TRUE);
-                $refProp->setValue($class, $value);
+                    $refProp = $ref->getProperty($method);
+                    $refProp->setAccessible(TRUE);
+                    $refProp->setValue($class, $value);
+                }
+                if ($value === null) {
+                    $class->$method();
+                    continue;
+                }
             }
-            if ($value === null) {
-                $class->$method();
-                continue;
-            }
+            $this->em->persist($class);
         }
-        $this->em->persist($class);
     }
 
 }

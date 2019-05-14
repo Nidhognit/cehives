@@ -26,9 +26,9 @@ abstract class AbstractFixtures implements FixturesInterface
         foreach ($this->data as $entity => $data) {
             foreach ($data as $key => $entityData) {
                 if (isset($this->defaults[$entity])) {
-                    $result[$entity] = array_merge($this->defaults[$entity], $entityData);
+                    $result[$entity][$key] = array_merge($this->defaults[$entity], $entityData);
                 } else {
-                    $result[$entity] = $data;
+                    $result[$entity][$key] = $data;
                 }
             }
         }
