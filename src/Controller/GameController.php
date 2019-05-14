@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class Mai
@@ -21,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class GameController extends MainController
 {
-    /** @var GameSandboxManager
+    /** @var GameSandboxManager */
     protected $gameSandboxManager;
     /** @var GameViewFactory */
     protected $gameViewFactory;
@@ -32,7 +31,6 @@ class GameController extends MainController
         $this->gameSandboxManager = $gameSandboxManager;
         $this->gameViewFactory = $gameViewFactory;
     }
-
 
     /**
      * @Route("/play/{id_hash}", name="gameplay")

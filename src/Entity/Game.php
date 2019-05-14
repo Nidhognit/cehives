@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="game")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Game
 {
@@ -72,7 +73,7 @@ class Game
      */
     protected $mapItems = [];
 
-    public function generateHash():void
+    public function generateHash(): void
     {
         $this->id_hash = sha1(time() . $this->user_id);
     }
@@ -141,14 +142,6 @@ class Game
         return $this->dateCreated;
     }
 
-    /**
-     * @param \DateTime $dateCreated
-     */
-    public function setDateCreated(\DateTime $dateCreated): void
-    {
-        $this->dateCreated = $dateCreated;
-    }
-
     public function getOriginalMapId(): int
     {
         return $this->originalMapId;
@@ -183,6 +176,15 @@ class Game
     {
         $mapItems = array_unique($mapItems);
         $this->mapItems = $mapItems;
+    }
+
+    /**
+     * @throws \Exception
+     * @ORM\PrePersist
+     */
+    public function doPrePersist(): void
+    {
+        $this->dateCreated = new \DateTime();
     }
 
 }

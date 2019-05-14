@@ -35,7 +35,6 @@ class GameSandboxManager extends AbstractEntityManager
         $game = new Game();
         $game->setName($name);
         $game->setType(Game::TYPE_SANDBOX);
-        $game->setDateCreated(new \DateTime());
         $game->setUserId($user->getId());
         $game->setOriginalMapId($mapTemplate->getId());
         $game->setMap($mapTemplate->getMap());
