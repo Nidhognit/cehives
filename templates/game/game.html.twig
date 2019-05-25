@@ -18,7 +18,14 @@
 {% block body %}
     <span id="game-initial" class="hide" data-game-initial="{{ gameView|json_encode }}"></span>
     <div class="col-md-12" style="height: 80px; border: black solid 1px">
-
+        {% for resourcePanel in gameView.resources.descriptorList %}
+            <div class="col-md-1" style="height: 80px; border: black solid 1px">
+                <i class="{{ resourcePanel.icon }}"></i>
+                <span class="text-info">{{ resourcePanel.name|trans }}</span>
+                <br>
+                <span class="text-danger">{{ resourcePanel.count }}</span>
+            </div>
+        {% endfor %}
     </div>
     <div class="col-md-12">
         <div class="col-md-10">

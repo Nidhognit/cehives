@@ -97,6 +97,18 @@
         <source>translation@game.btn.confirm</source>
         <target>Подтвердить</target>
       </trans-unit>
+      <trans-unit id="PNb.USt" resname="translation@game.resources.name.berry">
+        <source>translation@game.resources.name.berry</source>
+        <target>Ягоды</target>
+      </trans-unit>
+      <trans-unit id="ElQFxv4" resname="translation@game.resources.name.gold">
+        <source>translation@game.resources.name.gold</source>
+        <target>Золото</target>
+      </trans-unit>
+      <trans-unit id="VazszXE" resname="translation@game.resources.name.grain">
+        <source>translation@game.resources.name.grain</source>
+        <target>Зерно</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

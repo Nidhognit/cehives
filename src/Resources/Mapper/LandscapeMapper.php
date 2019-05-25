@@ -23,6 +23,6 @@ class LandscapeMapper
             return new self::$map[$name];
         }
 
-        throw new \InvalidArgumentException('Landscape whith name ' . $name . ' not found in mapper');
+        throw new \InvalidArgumentException('Landscape with name ' . $name . ' not found in mapper');
     }
 }

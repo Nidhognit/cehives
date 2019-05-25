@@ -10,5 +10,7 @@ namespace Cehevis\Model\Descriptors;
 
 interface BlockDescriptorInterface extends \JsonSerializable
 {
+    public function getColor(): string;
 
+    public function getType(): string;
 }

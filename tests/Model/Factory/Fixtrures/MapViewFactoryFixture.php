@@ -15,6 +15,8 @@ class MapViewFactoryFixture extends AbstractFixtures
             'userId' => 1,
             'originalMapId' => 1,
             'generateHash' => null,
+            'resourceList' => [],
+            'resourceMap' => []
         ]
     ];
 

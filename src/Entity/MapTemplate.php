@@ -53,7 +53,19 @@ class MapTemplate
      */
     protected $name;
 
-    public function getId()
+    /**
+     * @var array
+     * @ORM\Column(type="json_array", nullable=false)
+     */
+    protected $resourceList;
+
+    /**
+     * @var array
+     * @ORM\Column(type="json_array", nullable=false)
+     */
+    protected $resourceMap;
+
+    public function getId():int
     {
         return $this->id;
     }
@@ -108,4 +120,23 @@ class MapTemplate
         $this->mapItems = $mapItems;
     }
 
+    public function getResourceList(): array
+    {
+        return $this->resourceList;
+    }
+
+    public function setResourceList(array $resourceList): void
+    {
+        $this->resourceList = $resourceList;
+    }
+
+    public function getResourceMap(): array
+    {
+        return $this->resourceMap;
+    }
+
+    public function setResourceMap(array $resourceMap): void
+    {
+        $this->resourceMap = $resourceMap;
+    }
 }

@@ -16,12 +16,13 @@ class GameView implements \JsonSerializable
     protected $buildings;
 
     protected $units;
-
+    /** @var ResourceView */
     protected $resources;
 
-    public function __construct(MapView $map)
+    public function __construct(MapView $map, ResourceView $resources)
     {
         $this->map = $map;
+        $this->resources = $resources;
     }
 
     public function jsonSerialize(): array
@@ -39,4 +40,8 @@ class GameView implements \JsonSerializable
         return $this->map;
     }
 
+    public function getResources(): ResourceView
+    {
+        return $this->resources;
+    }
 }

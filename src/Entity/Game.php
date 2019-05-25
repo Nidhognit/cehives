@@ -73,6 +73,18 @@ class Game
      */
     protected $mapItems = [];
 
+    /**
+     * @var array
+     * @ORM\Column(type="json_array", nullable=false)
+     */
+    protected $resourceList;
+
+    /**
+     * @var array
+     * @ORM\Column(type="json_array", nullable=false)
+     */
+    protected $resourceMap;
+
     public function generateHash(): void
     {
         $this->id_hash = sha1(time() . $this->user_id);
@@ -187,4 +199,23 @@ class Game
         $this->dateCreated = new \DateTime();
     }
 
+    public function getResourceList(): array
+    {
+        return $this->resourceList;
+    }
+
+    public function setResourceList(array $resourceList): void
+    {
+        $this->resourceList = $resourceList;
+    }
+
+    public function getResourceMap(): array
+    {
+        return $this->resourceMap;
+    }
+
+    public function setResourceMap(array $resourceMap): void
+    {
+        $this->resourceMap = $resourceMap;
+    }
 }

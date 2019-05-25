@@ -4,6 +4,9 @@ namespace Cehevis\Tests\Model\Factory\Fixtrures;
 
 use Cehevis\Entity\Game;
 use Cehevis\Resources\Landscape\Field;
+use Cehevis\Resources\Resources\Berry;
+use Cehevis\Resources\Resources\Gold;
+use Cehevis\Resources\Resources\Grain;
 use Cehevis\Tests\TestTools\Fixtrures\AbstractFixtures;
 
 class GameViewFactoryFixture extends AbstractFixtures
@@ -15,6 +18,8 @@ class GameViewFactoryFixture extends AbstractFixtures
             'userId' => 1,
             'originalMapId' => 1,
             'generateHash' => null,
+            'resourceList' => [],
+            'resourceMap' => []
         ]
     ];
 
@@ -27,12 +32,28 @@ class GameViewFactoryFixture extends AbstractFixtures
                     ],
                 'mapItems' => [
                     Field::NAME
-                ]
+                ],
+                'resourceList' => [
+                    [
+                        'type' => Berry::NAME,
+                        'count' => 20
+                    ],
+                    [
+                        'type' => Gold::NAME,
+                        'count' => 1000
+                    ],
+                    [
+                        'type' => Grain::NAME,
+                        'count' => 10
+                    ],
+                ],
+                'resourceMap' => []
             ],
             [
                 'id' => 2,
                 'map' => [],
-                'mapItems' => []
+                'mapItems' => [],
+                'userId' => 2,
             ]
         ]
     ];

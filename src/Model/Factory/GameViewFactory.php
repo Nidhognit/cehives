@@ -14,16 +14,20 @@ class GameViewFactory
 {
     /** @var MapViewFactory */
     protected $mapViewFactory;
+    /** @var ResourceViewFactory */
+    protected $resourceViewFactory;
 
-    public function __construct(MapViewFactory $mapViewFactory)
+    public function __construct(MapViewFactory $mapViewFactory, ResourceViewFactory $resourceViewFactory)
     {
         $this->mapViewFactory = $mapViewFactory;
+        $this->resourceViewFactory = $resourceViewFactory;
     }
 
     public function create(Game $game): GameView
     {
         $mapView = $this->mapViewFactory->create($game->getMap(), $game->getMapItems());
+        $resourceView = $this->resourceViewFactory->create($game->getResourceList(), $game->getResourceMap());
 
-        return new GameView($mapView);
+        return new GameView($mapView, $resourceView);
     }
 }
